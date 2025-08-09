@@ -1,0 +1,40 @@
+<h2>Upcoming Events</h2>
+
+<div>
+  <button class="btn-primary" (click)="fetch(30)">Next 30 days</button>
+  <button class="btn-primary" (click)="fetch(60)">Next 60 days</button>
+  <button class="btn-primary" (click)="fetch(180)">Next 180 days</button>
+</div>
+
+<div *ngIf="loading()">Loading…</div>
+<div *ngIf="error() as e" style="color:#b00020">
+  {{ e }} <button (click)="fetch()">Retry</button>
+</div>
+
+<div style="margin:8px 0">
+  <button class="btn-primary" (click)="setSort('startsOn')">
+    Sort by Start {{ sortKey()==='startsOn' ? '('+sortDir()+')' : '' }}
+  </button>
+  <button class="btn-primary" (click)="setSort('name')">
+    Sort by Name {{ sortKey()==='name' ? '('+sortDir()+')' : '' }}
+  </button>
+</div>
+
+<table *ngIf="!loading() && !error()"  class="styled-table">
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let e of sorted()">
+      <td>{{ e.name }}</td>
+      <td>{{ e.startsOn | date:'medium' }}</td>
+      <td>{{ e.endsOn   | date:'medium' }}</td>
+      <td>{{ e.location }}</td>
+    </tr>
+  </tbody>
+</table>
