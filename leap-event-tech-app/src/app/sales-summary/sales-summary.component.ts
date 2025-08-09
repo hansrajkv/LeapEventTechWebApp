@@ -2,11 +2,16 @@ import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TopEventSales } from '../leap-event-tech-app/models/top-event-sales';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sales-summary',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [
+    CommonModule, 
+    HttpClientModule,
+    RouterLink
+  ],
   templateUrl: './sales-summary.component.html',
   styleUrl: './sales-summary.component.css'
 })

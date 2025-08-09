@@ -1,4 +1,7 @@
-<h2>Sales Summary (Top 5)</h2>
+<div class="page-header">
+  <h2>Top 5 Events by Sales</h2>
+  <button class="btn-primary" [routerLink]="['/events']">Back to Events</button>
+</div>
 
 <div *ngIf="loading()">Loading…</div>
 <div *ngIf="error() as e" style="color:#b00020">
